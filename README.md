@@ -5,6 +5,7 @@ This repository was made for developers who would like to study different graphi
 All system related code will be implemented with using [GLFW](https://www.glfw.org) library, with C++ language to make it possible fully concentrate on the graphical API.
 
 Here you may find source samples for:
+
 [OpenGL](opengl/README.md)
 
 
