@@ -1,0 +1,7 @@
+
+#ifndef _ASSETS_HPP_
+#define _ASSETS_HPP_
+
+char assets_path[] = "@ASSETS_DIR@";
+
+#endif /* _ASSETS_HPP_ */
