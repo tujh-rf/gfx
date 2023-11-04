@@ -1,0 +1,11 @@
+build_dir*/
+CMakeCache.txt
+CMakeFiles/*
+**/CMakeFiles/*
+Makefile
+*.make
+_deps/*
+cmake_install.cmake
+opengl/**/*.cmake
+bin/*
+assets/assets.hpp
