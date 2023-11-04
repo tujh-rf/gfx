@@ -11,3 +11,5 @@ OpenGL has few different implementations:
 * OpenGL ES (OpenGL for Embedded Systems)
 
 Starting February of 2016 OpenGL has not been developed anymore and was replaced with successor API - Vilkan.
+
+To verify and load available OpenGL functionality [Glad](glad/README.md) is using in the project.
