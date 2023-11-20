@@ -27,7 +27,7 @@ oglApp g_app;
 /* error handling */
 static void error_callback( int error, const char* description ) {
     /* print error description */
-    std::cout << "GLFW Error: "
+    std::cerr << "GLFW Error: "
               << description
               << std::endl;
 }
