@@ -94,7 +94,7 @@ struct vkApp {
     vk_render       render;     //!< Vulkan render objects
 
     std::vector< const char* > vk_required_instance_extensions;
-    std::vector< const char* > vk_required_layers            { "VK_LAYER_KHRONOS_validation" };
+    std::vector< const char* > vk_required_layers;
     std::vector< const char* > vk_required_device_extensions { VK_KHR_SWAPCHAIN_EXTENSION_NAME };
 };
 
@@ -161,6 +161,9 @@ static void vk_create_instance() {
         .apiVersion         = VK_API_VERSION_1_3    /* Vulkan v1.3 */
     };
 
+#ifdef _DEBUG
+    g_app.vk_required_layers.push_back( "VK_LAYER_KHRONOS_validation" );
+
     /* capture only errors */
     VkDebugUtilsMessengerCreateInfoEXT debug_util_info {
         .sType           = VK_STRUCTURE_TYPE_DEBUG_UTILS_MESSENGER_CREATE_INFO_EXT,
@@ -171,10 +174,14 @@ static void vk_create_instance() {
         .pfnUserCallback = &vk_error_callback
     };
 
+#endif /* _DEBUG */
+
     /* Vulkan instance */
     VkInstanceCreateInfo instance_create_info {
         .sType                   = VK_STRUCTURE_TYPE_INSTANCE_CREATE_INFO,
+#ifdef _DEBUG
         .pNext                   = static_cast< void* > ( &debug_util_info ),   /* link to VkDebugUtilsMessengerCreateInfoEXT */
+#endif /* _DEBUG */
         .pApplicationInfo        = &app_info,                                   /* link ot VkApplicationInfo */
         .enabledLayerCount       = static_cast< uint32_t > ( g_app.vk_required_layers.size() ),
         .ppEnabledLayerNames     = g_app.vk_required_layers.data(),
@@ -189,9 +196,13 @@ static void vk_create_instance() {
     /* initialize pointers to functions for this instance */
     volkLoadInstanceOnly( g_app.vk.instance );
 
+#ifdef _DEBUG
+
     /* create debug messenger object */
     VK_CALL( vkCreateDebugUtilsMessengerEXT( g_app.vk.instance, &debug_util_info, nullptr, &g_app.vk.messenger ),
              "Cannot create Vulkan debug messenger" );
+
+#endif /* _DEBUG */
 
     /* in Vulkan device and surface are not linked directly */
     VK_CALL( glfwCreateWindowSurface( g_app.vk.instance, g_app.glfw.window, nullptr, &g_app.device.surface ),
@@ -221,8 +232,8 @@ static void vk_create_device() {
     VK_CALL( vkEnumeratePhysicalDevices( g_app.vk.instance, &phy_dev_count, nullptr ),
              "Failed to read the count of physical devices" );
 
-    VkPhysicalDevice available_phy_dev[phy_dev_count];
-    VK_CALL( vkEnumeratePhysicalDevices( g_app.vk.instance, &phy_dev_count, available_phy_dev ),
+    std::vector< VkPhysicalDevice > available_phy_dev( phy_dev_count );
+    VK_CALL( vkEnumeratePhysicalDevices( g_app.vk.instance, &phy_dev_count, available_phy_dev.data() ),
              "Cannot enumerate physical devices" );
 
     /* search for suitable physical device - GPU */
@@ -234,8 +245,8 @@ static void vk_create_device() {
         VK_CALL( vkEnumerateDeviceExtensionProperties( phy_dev, nullptr, &ext_prop_count, nullptr ),
                  "Failed to read the count of extension properties" );
 
-        VkExtensionProperties available_extensions[ext_prop_count];
-        VK_CALL( vkEnumerateDeviceExtensionProperties( phy_dev, nullptr, &ext_prop_count, available_extensions ),
+        std::vector< VkExtensionProperties > available_extensions( ext_prop_count );
+        VK_CALL( vkEnumerateDeviceExtensionProperties( phy_dev, nullptr, &ext_prop_count, available_extensions.data() ),
                  "Cannot enumerate extension properties for the physical device" );
 
         std::set< std::string > required_extensions( g_app.vk_required_device_extensions.begin(), g_app.vk_required_device_extensions.end() );
@@ -255,8 +266,8 @@ static void vk_create_device() {
         if( !queue_family_count )
             continue;
 
-        VkQueueFamilyProperties queue_family_prop[queue_family_count];
-        vkGetPhysicalDeviceQueueFamilyProperties( phy_dev, &queue_family_count, queue_family_prop );
+        std::vector< VkQueueFamilyProperties > queue_family_prop( queue_family_count );
+        vkGetPhysicalDeviceQueueFamilyProperties( phy_dev, &queue_family_count, queue_family_prop.data() );
 
         std::optional< uint32_t > graph_family;
         std::optional< uint32_t > pres_family;
@@ -381,8 +392,8 @@ static void vk_create_swapchain() {
     if( !surf_formats_count )
         throw std::runtime_error( "Surface doesn't support any graphical formats" );
 
-    VkSurfaceFormatKHR surf_formats[surf_formats_count];
-    VK_CALL( vkGetPhysicalDeviceSurfaceFormatsKHR( g_app.device.gpu, g_app.device.surface, &surf_formats_count, surf_formats ),
+    std::vector< VkSurfaceFormatKHR > surf_formats( surf_formats_count );
+    VK_CALL( vkGetPhysicalDeviceSurfaceFormatsKHR( g_app.device.gpu, g_app.device.surface, &surf_formats_count, surf_formats.data() ),
              "Cannot read formats of the surface" );
 
     uint32_t surf_format_idx;
@@ -402,19 +413,19 @@ static void vk_create_swapchain() {
     if( !surf_pres_modes_count )
         throw std::runtime_error( "Surface doesn't support present modes" );
 
-    VkPresentModeKHR surf_present_modes[surf_pres_modes_count];
-    VK_CALL( vkGetPhysicalDeviceSurfacePresentModesKHR( g_app.device.gpu, g_app.device.surface, &surf_pres_modes_count, surf_present_modes ),
+    std::vector< VkPresentModeKHR > surf_present_modes( surf_pres_modes_count );
+    VK_CALL( vkGetPhysicalDeviceSurfacePresentModesKHR( g_app.device.gpu, g_app.device.surface, &surf_pres_modes_count, surf_present_modes.data() ),
              "Failed to read present modes of the device" );
 
     VkPresentModeKHR display_present_mode = VK_PRESENT_MODE_MAX_ENUM_KHR;
     for( const auto &available_present_mode: surf_present_modes ) {
-        if( available_present_mode == VK_PRESENT_MODE_MAILBOX_KHR ) {
+        if( available_present_mode == VK_PRESENT_MODE_FIFO_KHR ) {
             display_present_mode = available_present_mode;
             break;
         }
     }
     if( display_present_mode == VK_PRESENT_MODE_MAX_ENUM_KHR )
-        throw std::runtime_error( "Surface doesn't support VK_PRESENT_MODE_MAILBOX_KHR mode" );
+        throw std::runtime_error( "Surface doesn't support VK_PRESENT_MODE_FIFO_KHR mode" );
 
     VkSwapchainCreateInfoKHR swapchain_create_info {
         .sType              = VK_STRUCTURE_TYPE_SWAPCHAIN_CREATE_INFO_KHR,
@@ -790,8 +801,10 @@ static void init_vulkan() {
     uint32_t property_count = 0;
     VK_CALL( vkEnumerateInstanceLayerProperties( &property_count, nullptr ), "Failed to read the count of layer properties" );
 
-    VkLayerProperties available_properties[property_count];
-    VK_CALL( vkEnumerateInstanceLayerProperties( &property_count, available_properties ), "Cannot enumerate layer properties" );
+    std::vector< VkLayerProperties > available_properties( property_count );
+    VK_CALL( vkEnumerateInstanceLayerProperties( &property_count, available_properties.data() ), "Cannot enumerate layer properties" );
+
+#ifdef _DEBUG
 
     bool layer_found = false;
     const std::string validation_layer_name( "VK_LAYER_KHRONOS_validation" );
@@ -807,6 +820,8 @@ static void init_vulkan() {
 
     /* add debug extension to the list of required extensions */
     g_app.vk_required_instance_extensions.push_back( VK_EXT_DEBUG_UTILS_EXTENSION_NAME );
+
+#endif /* _DEBUG */
 
     vk_create_instance();
     vk_create_device();
