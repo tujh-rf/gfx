@@ -8,7 +8,7 @@ function( FETCH_GLFW )
         FetchContent_Declare(
             glfw
             GIT_REPOSITORY  https://github.com/glfw/glfw.git
-            GIT_TAG         3.3.8
+            GIT_TAG         3.3.9
             GIT_SHALLOW     TRUE
         )
 
@@ -19,6 +19,7 @@ function( FETCH_GLFW )
         set( GLFW_BUILD_DOCS OFF )
         set( GLFW_VULKAN_STATIC OFF )
         # experimental option for Linux - Wayland
+        # Waylands in 3.3.9 works good for OGL samples but doesn't for Vulkan
         # set( GLFW_USE_WAYLAND ON )
 
         FetchContent_MakeAvailable( glfw )
