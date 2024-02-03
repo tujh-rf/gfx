@@ -17,10 +17,15 @@ function( FETCH_GLFW )
         set( GLFW_BUILD_EXAMPLES OFF )
         set( GLFW_BUILD_TESTS OFF )
         set( GLFW_BUILD_DOCS OFF )
-        # experimental option for Linux - Wayland use
+        set( GLFW_VULKAN_STATIC OFF )
+        # experimental option for Linux - Wayland
         # set( GLFW_USE_WAYLAND ON )
 
         FetchContent_MakeAvailable( glfw )
+
+        if( VULKAN_HEADERS_FOUND )
+            target_include_directories( glfw PRIVATE ${VULKAN_HEADERS_INCLUDE_DIR} )
+        endif()
 
     list( POP_BACK CMAKE_MESSAGE_INDENT )
 
