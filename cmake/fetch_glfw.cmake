@@ -19,8 +19,7 @@ function( FETCH_GLFW )
         set( GLFW_BUILD_DOCS OFF )
         set( GLFW_VULKAN_STATIC OFF )
         # experimental option for Linux - Wayland
-        # Waylands in 3.3.9 works good for OGL samples but doesn't for Vulkan
-        # set( GLFW_USE_WAYLAND ON )
+        set( GLFW_USE_WAYLAND ON )
 
         FetchContent_MakeAvailable( glfw )
 
