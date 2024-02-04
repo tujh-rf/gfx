@@ -7,4 +7,6 @@ fetch_volk()
 # add Vulkan samples
 if( SAMPLES_VULKAN )
     add_subdirectory( 01_initialization )
+    add_subdirectory( 02_simple_fullscreen )
+    add_subdirectory( 03_fullscreen )
 endif()
