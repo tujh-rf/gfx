@@ -8,7 +8,7 @@ function( FETCH_GLFW )
         FetchContent_Declare(
             glfw
             GIT_REPOSITORY  https://github.com/glfw/glfw.git
-            GIT_TAG         3.3.9
+            GIT_TAG         3.4
             GIT_SHALLOW     TRUE
         )
 
@@ -18,8 +18,6 @@ function( FETCH_GLFW )
         set( GLFW_BUILD_TESTS OFF )
         set( GLFW_BUILD_DOCS OFF )
         set( GLFW_VULKAN_STATIC OFF )
-        # experimental option for Linux - Wayland
-        set( GLFW_USE_WAYLAND ON )
 
         FetchContent_MakeAvailable( glfw )
 
