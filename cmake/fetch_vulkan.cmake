@@ -8,7 +8,7 @@ function( FETCH_VULKAN_HEADERS )
         FetchContent_Declare(
             vulkan_headers
             GIT_REPOSITORY  https://github.com/KhronosGroup/Vulkan-Headers.git
-            GIT_TAG         v1.3.270
+            GIT_TAG         vulkan-sdk-1.3.280
             GIT_SHALLOW     TRUE
         )
 
@@ -35,7 +35,7 @@ function( FETCH_VOLK )
         FetchContent_Declare(
             volk
             GIT_REPOSITORY  https://github.com/zeux/volk.git
-            GIT_TAG         1.3.270
+            GIT_TAG         vulkan-sdk-1.3.280
             GIT_SHALLOW     TRUE
         )
 
