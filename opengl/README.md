@@ -8,8 +8,8 @@ OpenGL has few different implementations:
 
 * [OpenGL with Fixed Functional Pipeline](fixed-functional-pipeline/README.md) (OpenGL 1.0 - OpenGL 3.0 core)
 * [OpenGL with programmable pipeline](programmable-pipeline/README.md) (OpenGL 3.0 core - OpenGL 4.6 core)
-* OpenGL ES (OpenGL for Embedded Systems)
+* [OpenGL ES](opengl-embedded-systems/README.md) (OpenGL for Embedded Systems)
 
-Starting February of 2016 OpenGL has not been developed anymore and was replaced with successor API - Vilkan.
+Starting February of 2016 OpenGL has not been developed anymore and was replaced with successor API - Vulkan.
 
 To verify and load available OpenGL functionality [Glad](glad/README.md) is using in the project.

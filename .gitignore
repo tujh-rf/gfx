@@ -9,3 +9,12 @@ cmake_install.cmake
 opengl/**/*.cmake
 bin/*
 assets/assets.hpp
+*.iml
+.gradle
+local.properties
+.idea/*
+.DS_Store
+build/*
+captures/*
+.externalNativeBuild
+.cxx
