@@ -43,9 +43,9 @@ option( GFX_TUTORIALS "All graphical API tutorials" ON )
 option( GFX_SAMPLES "All graphical API samples" ON )
 if( SUPPORT_OPENGL )
     option( OPENGL2_TUTORIAL "OpenGL2 Fixed Functional pipeline tutorial" ON )
-    option( OPENGL2_SAMPLES "OpenGL2 Fixed Functional pipeline samples" ON )
+    option( OPENGL2_SAMPLES "OpenGL2 Fixed Functional pipeline samples" OFF )
     option( OPENGL4_TUTORIAL "OpenGL4 Programmable pipeline tutorial" ON )
-    option( OPENGL2_SAMPLES "OpenGL4 Programmable pipeline samples" ON )
+    option( OPENGL2_SAMPLES "OpenGL4 Programmable pipeline samples" OFF )
 endif()
 
 # if Vulkan is suppoted by the target system - fetch latest headers first
@@ -69,8 +69,3 @@ fetch_glfw()
 if( GFX_TUTORIALS )
     add_subdirectory( tutorials )
 endif()
-
-# code samples
-# if( GFX_SAMPLES )
-#     add_subdirectory( samples )
-# endif()
