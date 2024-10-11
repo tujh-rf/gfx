@@ -1,4 +1,4 @@
-# OpenGL 2.1 tutorial
+# OpenGL 4.6 tutorial
 
 add_subdirectory( 001_ogl4_glfw_window )
 add_subdirectory( 002_ogl4_opengl_initialization )
