@@ -1,7 +1,7 @@
 /*
     OpenGL 2.1 tutorial
     
-    Simple fullscreen with predefined screen resolution
+    OpenGL 2.1 Initialization with Glad library
  */
 
 #include <cstdlib>
@@ -96,8 +96,8 @@ static bool init_window( oglApp *app ) {
     app->window = glfwCreateWindow(
         window_width,
         window_height,
-        "OpenGL 2.1 - Tutorial - Fullscreen",
-        glfwGetPrimaryMonitor(), /* actual monitor is needed to switch on full screen */
+        "OpenGL 2.1 - Tutorial - Initialization",
+        nullptr,
         nullptr
     );
     if( !app->window )
@@ -150,6 +150,8 @@ static bool init_opengl( oglApp *app ) {
     if( !gladLoadGL() )
         return false;
 
+    app->gl_loaded = true;
+
     /* setup window clean color - light blue
      */
     glClearColor( 0.0f, 0.3f, 0.6f, 1.0f );
@@ -158,6 +160,13 @@ static bool init_opengl( oglApp *app ) {
 }
 
 static bool cleanup_opengl( oglApp *app ) {
+    if( !app )
+        return false;
+    if( !app->gl_loaded )
+        return false;
+
+    app->gl_loaded = false;
+
     /* nothing is here
      */
     return true;

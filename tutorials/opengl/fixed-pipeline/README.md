@@ -10,9 +10,9 @@ OpenGL 3.0 was the last revision of the specification which fully supported both
 
 Tutorials
 
-[GLFW Window](001_glfw_window/README.md)
-[OpenGL 2.1 Initialization](002_opengl_initialization/README.md)
-[Simple fullscreen](003_simple_fullscreen/README.md)
-[Fullscreen with actual resolution](004_actual_fullscreen/README.md)
+[GLFW Window](001_ogl2_glfw_window/README.md)
+[OpenGL 2.1 Initialization](002_ogl2_opengl_initialization/README.md)
+[Simple fullscreen](003_ogl2_simple_fullscreen/README.md)
+[Fullscreen with actual resolution](004_ogl2_actual_fullscreen/README.md)
 
 ---

@@ -152,6 +152,8 @@ static bool init_opengl( oglApp *app ) {
     if( !gladLoadGL() )
         return false;
 
+    app->gl_loaded = true;
+
     /* setup window clean color - light blue
      */
     glClearColor( 0.0f, 0.3f, 0.6f, 1.0f );
@@ -160,6 +162,13 @@ static bool init_opengl( oglApp *app ) {
 }
 
 static bool cleanup_opengl( oglApp *app ) {
+    if( !app )
+        return false;
+    if( !app->gl_loaded )
+        return false;
+
+    app->gl_loaded = false;
+
     /* nothing is here
      */
     return true;

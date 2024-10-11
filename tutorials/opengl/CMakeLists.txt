@@ -7,7 +7,7 @@ if( OPENGL2_TUTORIAL )
     add_subdirectory( fixed-pipeline )
 endif()
 
-# # OpenGL 4.6 Programmable pipeline
-# if( OPENGL4_TUTORIAL )
-#     add_subdirectory( programmable-pipeline )
-# endif()
+# OpenGL 4.6 Programmable pipeline
+if( OPENGL4_TUTORIAL )
+    add_subdirectory( programmable-pipeline )
+endif()
