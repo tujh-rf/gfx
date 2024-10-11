@@ -11,5 +11,6 @@ OpenGL 3.0 was the last revision of the specification which fully supported both
 Tutorials
 
 [GLFW Window](001_glfw_window/README.md)
+[OpenGL 2.1 Initialization](002_opengl_initialization/README.md)
 
 ---
