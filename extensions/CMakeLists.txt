@@ -1,0 +1,10 @@
+
+if( SUPPORT_OPENGL )
+    add_subdirectory( glad )
+
+    set( GLAD_FOUND ${GLAD_FOUND} PARENT_SCOPE )
+    set( GLAD_ROOT ${GLAD_ROOT} PARENT_SCOPE )
+    set( GLAD_INCLUDE_DIR ${GLAD_INCLUDE_DIR} PARENT_SCOPE )
+    set( GLAD_LIBRARY ${GLAD_LIBRARY} PARENT_SCOPE )
+    
+endif()
