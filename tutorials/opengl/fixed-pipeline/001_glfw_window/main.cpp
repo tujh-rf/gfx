@@ -69,7 +69,6 @@ static bool init_glfw( oglApp *app ) {
 static bool cleanup_glfw( oglApp *app ) {
     if( !app )
         return false;
-
     if( !app->glfw_init )
         return true;
 
@@ -127,7 +126,6 @@ static bool init_window( oglApp *app ) {
 static bool cleanup_window( oglApp *app ) {
     if( !app )
         return false;
-
     if( !app->window )
         return true;
 
