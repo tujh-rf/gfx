@@ -14,4 +14,5 @@ The OpenGL rendering pipeline defines the following shader stages, with their en
 
 [GLFW Window](001_ogl4_glfw_window/README.md)
 [OpenGL 4.6 Initialization](002_ogl4_opengl_initialization/README.md)
+[Simple fullscreen](003_ogl4_simple_fullscreen/README.md)
 ---
