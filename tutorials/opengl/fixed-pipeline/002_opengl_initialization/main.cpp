@@ -1,7 +1,7 @@
 /*
     OpenGL 2.1 tutorial
     
-    GLFW window
+    OpenGL 2.1 Initialization with Glad library
  */
 
 #include <cstdlib>
