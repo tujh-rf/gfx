@@ -12,5 +12,6 @@ Tutorials
 
 [GLFW Window](001_glfw_window/README.md)
 [OpenGL 2.1 Initialization](002_opengl_initialization/README.md)
+[Simple fullscreen](003_simple_fullscreen/README.md)
 
 ---
