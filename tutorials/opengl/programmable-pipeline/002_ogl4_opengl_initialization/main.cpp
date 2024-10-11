@@ -88,10 +88,10 @@ static bool init_window( oglApp *app ) {
     if( !app->glfw_init )
         return false;
 
-    /* request OpenGL 2.1
+    /* request OpenGL 4.6
      */
-    glfwWindowHint( GLFW_CONTEXT_VERSION_MAJOR, 2 );
-    glfwWindowHint( GLFW_CONTEXT_VERSION_MINOR, 1 );
+    glfwWindowHint( GLFW_CONTEXT_VERSION_MAJOR, 4 );
+    glfwWindowHint( GLFW_CONTEXT_VERSION_MINOR, 6 );
 
     app->window = glfwCreateWindow(
         window_width,
