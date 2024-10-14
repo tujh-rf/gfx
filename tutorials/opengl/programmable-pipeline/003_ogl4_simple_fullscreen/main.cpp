@@ -50,10 +50,7 @@ static void key_callback(
         glfwSetWindowShouldClose( window, GLFW_TRUE );
 }
 
-static bool init_glfw( oglApp *app ) {
-    if( !app )
-        return false;
-
+static bool init_glfw( oglApp &app ) {
     /* setup error callback first to catch all errors
      */
     (void)glfwSetErrorCallback( glfw_error_callback );
@@ -63,29 +60,25 @@ static bool init_glfw( oglApp *app ) {
     if( glfwInit() == GLFW_FALSE )
         return false;
 
-    app->glfw_init = true;
+    app.glfw_init = true;
 
     return true;
 }
 
-static bool cleanup_glfw( oglApp *app ) {
-    if( !app )
-        return false;
-    if( !app->glfw_init )
+static bool cleanup_glfw( oglApp &app ) {
+    if( !app.glfw_init )
         return true;
 
     /* cleanup GLFW resources
      */
     glfwTerminate();
-    app->glfw_init = false;
+    app.glfw_init = false;
 
     return true;
 }
 
-static bool init_window( oglApp *app ) {
-    if( !app )
-        return false;
-    if( !app->glfw_init )
+static bool init_window( oglApp &app ) {
+    if( !app.glfw_init )
         return false;
 
     /* request OpenGL 4.6
@@ -93,56 +86,52 @@ static bool init_window( oglApp *app ) {
     glfwWindowHint( GLFW_CONTEXT_VERSION_MAJOR, 4 );
     glfwWindowHint( GLFW_CONTEXT_VERSION_MINOR, 6 );
 
-    app->window = glfwCreateWindow(
+    app.window = glfwCreateWindow(
         window_width,
         window_height,
         "OpenGL 4.6 - Tutorial - Fullscreen",
         glfwGetPrimaryMonitor(), /* actual monitor is needed to switch on full screen */
         nullptr
     );
-    if( !app->window )
+    if( !app.window )
         return false;
 
     /* setup user pointer
      */
     glfwSetWindowUserPointer(
-        app->window,
-        app 
+        app.window,
+       &app
     );
 
     /* connect OpenGL context with window
      */
-    glfwMakeContextCurrent( app->window );
+    glfwMakeContextCurrent( app.window );
     glfwSwapInterval( 1 );  /* update window every time */
 
     /* acquire the keyboard
      */
     glfwSetKeyCallback(
-        app->window,
+        app.window,
         key_callback
     );
 
     return true;
 }
 
-static bool cleanup_window( oglApp *app ) {
-    if( !app )
-        return false;
-    if( !app->window )
+static bool cleanup_window( oglApp &app ) {
+    if( !app.window )
         return true;
 
     /* destroy GLFW window
      */
-    glfwDestroyWindow( app->window );
-    app->window = nullptr;
+    glfwDestroyWindow( app.window );
+    app.window = nullptr;
 
     return true;
 }
 
-static bool init_opengl( oglApp *app ) {
-    if( !app )
-        return false;
-    if( !app->window )
+static bool init_opengl( oglApp &app ) {
+    if( !app.window )
         return false;
 
     /* run Glad and load actual version of OpenGL
@@ -150,7 +139,7 @@ static bool init_opengl( oglApp *app ) {
     if( !gladLoadGL() )
         return false;
 
-    app->gl_loaded = true;
+    app.gl_loaded = true;
 
     /* setup window clean color - light blue
      */
@@ -159,20 +148,18 @@ static bool init_opengl( oglApp *app ) {
     return true;
 }
 
-static bool cleanup_opengl( oglApp *app ) {
-    if( !app )
-        return false;
-    if( !app->gl_loaded )
+static bool cleanup_opengl( oglApp &app ) {
+    if( !app.gl_loaded )
         return false;
 
-    app->gl_loaded = false;
+    app.gl_loaded = false;
 
     /* nothing is here
      */
     return true;
 }
 
-static bool init( oglApp *app ) {
+static bool init( oglApp &app ) {
     if( !init_glfw( app ) )
         return false;
     if( !init_window( app ) )
@@ -183,7 +170,7 @@ static bool init( oglApp *app ) {
     return true;
 }
 
-static bool cleanup( oglApp *app ) {
+static bool cleanup( oglApp &app ) {
     if( !cleanup_opengl( app ) )
         return false;
     if( !cleanup_window( app ) )
@@ -194,13 +181,13 @@ static bool cleanup( oglApp *app ) {
     return true;
 }
 
-static void draw( oglApp *app ) {
+static void draw( oglApp &app ) {
     int frame_width, frame_height;
 
     /* read the actual frame buffer size of the window
      */
     glfwGetFramebufferSize(
-        app->window,
+        app.window,
        &frame_width,
        &frame_height
     );
@@ -221,13 +208,13 @@ static void draw( oglApp *app ) {
 
     /* update window
      */
-    glfwSwapBuffers( app->window );
+    glfwSwapBuffers( app.window );
 }
 
 int main() {
     oglApp app;
 
-    if( !init( &app ) ) {
+    if( !init( app ) ) {
         std::cerr
             << "Cannot initialize the application"
                 << std::endl;
@@ -239,14 +226,14 @@ int main() {
     while( glfwWindowShouldClose( app.window ) == GLFW_FALSE ) {
         /* draw the context of the window
          */
-        draw( &app );
+        draw( app );
 
         /* proceed keyboard and mouse
          */
         glfwPollEvents();
     }
 
-    if( !cleanup( &app ) ) {
+    if( !cleanup( app ) ) {
         std::cerr
             << "Cleanup failed"
                 << std::endl;
