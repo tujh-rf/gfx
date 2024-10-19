@@ -9,4 +9,8 @@ GLES 1.0 (released July 2003) is drawn up against the OpenGL 1.3 specification, 
 GLES specifications 3.0-3.2 are backward compatible with GLES 2.0 and partially compatible with WebGL 2.0 but all of them are next generations of each other with porting of new features from OpenGL 3.0-4.6 but not a porting of Modern OpenGL standards to the embedded platforms.
 Because of that OpenGL ES SL (shading language) is different from the OpenGL SL.
 
+> All OpenGL ES tutorials are independent Android applications
+
+[GLES Initialization](a01_initialization/README.md)
+
 ---
