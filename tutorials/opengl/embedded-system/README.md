@@ -12,5 +12,6 @@ Because of that OpenGL ES SL (shading language) is different from the OpenGL SL.
 > All OpenGL ES tutorials are independent Android applications
 
 [GLES Initialization](a01_initialization/README.md)
+[Android Fullscreen Application with GLES](a02_fullscreen/README.md)
 
 ---
