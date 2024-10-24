@@ -487,6 +487,8 @@ static bool vk_select_phy_device( vkApp &app ) {
         app.vulkan.device.gpu = device;
         app.vulkan.device.graph_family_idx   = graph_family_idx;
         app.vulkan.device.present_family_idx = present_family_idx;
+
+        break;
     }
 
     if( app.vulkan.device.gpu == VK_NULL_HANDLE )
