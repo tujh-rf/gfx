@@ -481,6 +481,23 @@ static bool vk_select_phy_device( vkApp &app ) {
     /* search for the suitable physical device
      */
     for( const auto &device: available_devices ) {
+        /* device name
+         */
+        VkPhysicalDeviceProperties dev_props;
+        vkGetPhysicalDeviceProperties( device, &dev_props );
+        std::cout
+            << "Vulkan physical device: "
+                << dev_props.deviceName
+                << std::endl;
+        std::cout
+            << "Vulkan driver version: "
+                << VK_API_VERSION_MAJOR( dev_props.apiVersion )
+                << '.'
+                << VK_API_VERSION_MINOR( dev_props.apiVersion )
+                << '.'
+                << VK_API_VERSION_PATCH( dev_props.apiVersion )
+                << std::endl;
+
         /* first check:
          *  confirm that physical device support all required extensions
          */
