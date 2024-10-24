@@ -243,6 +243,20 @@ static bool vk_create_instance( vkApp &app ) {
     if( !app.glfw.window )
         return false;
 
+    /* read the actual supported version
+     */
+    uint32_t actual_version = 0;
+    VK_CALL( vkEnumerateInstanceVersion( &actual_version ),
+             "Cannot get the actual supported version of Vulkan" );
+    std::cout
+        << "Actual Vulkan version: "
+            << VK_API_VERSION_MAJOR( actual_version )
+            << '.'
+            << VK_API_VERSION_MINOR( actual_version )
+            << '.'
+            << VK_API_VERSION_PATCH( actual_version )
+            << std::endl;
+
     /* fullfil application information
      */
     VkApplicationInfo vk_app_info {
