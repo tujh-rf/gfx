@@ -1,6 +1,6 @@
 cmake_minimum_required( VERSION 3.22.1 FATAL_ERROR )
 
-set( EXAMPLE_NAME a01_initialization )
+set( EXAMPLE_NAME a003_initialization )
 
 project( ${EXAMPLE_NAME} C CXX )
 

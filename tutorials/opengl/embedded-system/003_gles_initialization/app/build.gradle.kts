@@ -4,11 +4,11 @@ plugins {
 }
 
 android {
-    namespace = "org.tutorial.a01_initialization"
+    namespace = "org.tutorial.a003_initialization"
     compileSdk = 35
 
     defaultConfig {
-        applicationId = "org.tutorial.a01_initialization"
+        applicationId = "org.tutorial.a003_initialization"
         minSdk = 30
         targetSdk = 35
         versionCode = 1
