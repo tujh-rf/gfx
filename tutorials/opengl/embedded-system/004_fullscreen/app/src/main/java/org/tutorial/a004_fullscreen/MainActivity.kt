@@ -1,4 +1,4 @@
-package org.tutorial.a02_fullscreen
+package org.tutorial.a004_fullscreen
 
 import android.os.Bundle
 import android.view.View
@@ -10,7 +10,7 @@ import com.google.androidgamesdk.GameActivity
 class MainActivity : GameActivity() {
     companion object {
         init {
-            System.loadLibrary("a02_fullscreen")
+            System.loadLibrary("a004_fullscreen")
         }
     }
 

@@ -1,6 +1,6 @@
 cmake_minimum_required( VERSION 3.22.1 FATAL_ERROR )
 
-set( EXAMPLE_NAME a02_fullscreen )
+set( EXAMPLE_NAME a004_fullscreen )
 
 project( ${EXAMPLE_NAME} C CXX )
 

@@ -4,11 +4,11 @@ plugins {
 }
 
 android {
-    namespace = "org.tutorial.a02_fullscreen"
+    namespace = "org.tutorial.a004_fullscreen"
     compileSdk = 35
 
     defaultConfig {
-        applicationId = "org.tutorial.a02_fullscreen"
+        applicationId = "org.tutorial.a004_fullscreen"
         minSdk = 30
         targetSdk = 35
         versionCode = 1

@@ -1,6 +1,6 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Theme.a02_fullscreen" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+    <style name="Theme.gfx_tutorial" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/light_blue_400</item>
         <item name="colorPrimaryVariant">@color/light_blue_400</item>
