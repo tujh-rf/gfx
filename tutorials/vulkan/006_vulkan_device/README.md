@@ -1,3 +1,5 @@
 # Vulkan logical device
 
-Create Vulkan device and connect everything together to be ready to render graphics.
+Application is on the half way to draw something. In this tutorial the Vulkan device object will be created for the chosen physical device.
+
+---

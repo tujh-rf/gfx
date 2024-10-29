@@ -1,3 +1,5 @@
 # Vulkan Swapchain Image Views
 
-Application must create image views before will be possible to use swapchain images.
+Before the images in the swapchain might be used the application should create special views for every image.
+
+---

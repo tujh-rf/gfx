@@ -1,3 +1,5 @@
 # Vulkan Simple fullscreen
 
-In this tutorial the fullscreen application will setup predefined resolution for the primary screen.
+For graphical applications is important also to know the actual resolution of the screen and reuse this information to switch to the full screen mode instead of all the time use the only one resolution.
+
+---

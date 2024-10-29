@@ -1,4 +1,7 @@
 # Window creation
 
-Every GUI application needs the window to draw the graphical content.
-For OpenGL 4.6 tutorial the GLFW library will be used.
+Every application require the render target - window where the graphic will be drawing.
+
+To concentrate on the graphical API for the desktop applications GLFW library will be using to handle system specific code for the window creation/destroying.
+
+---

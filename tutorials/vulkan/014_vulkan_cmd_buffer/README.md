@@ -1,3 +1,5 @@
 # Vulkan Command Buffer
 
-To render anything in Vulkan means to create a buffer of commands for every render step.
+Finally the frame buffers are ready to draw something. All drawing operations must be described in the special command buffer step by step before the buffer will be applied to the frame buffer.
+
+---

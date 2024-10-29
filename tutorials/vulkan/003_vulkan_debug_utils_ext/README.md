@@ -1,4 +1,9 @@
 # Vulkan DebugUtils
 
-If supported the application can receive debug messages from the Vulkan driver. To make it work the application needs to check if the layer VK_LAYER_KHRONOS_validation exist.
-All messages will be send via special messenger object which also needs to be created and properly destroyed.
+It is importand not only use graphical API but also read the debug output from it. Vulkan provides the posibility to read debug messages from the driver via special layer which is called VK_LAYER_KHRONOS_validation.
+
+The layer must be properly created before use and of course destroyed after.
+
+Also the level of debug messages might be set differently, in the tutorials the only debug level will be used.
+
+---

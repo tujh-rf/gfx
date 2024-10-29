@@ -1,3 +1,5 @@
-# Fullscreen application with OpenGL ES 3.x
+# Fullscreen application with OpenGL ES 3.2
 
-Almost the same application as in the first tutorial with the tiny difference - the application is the fullscreen.
+Native code stays the same but the Kotlin part was changed to run the application in the fullscreen mode. This means that the title of the application will not be visible as well as the system elements.
+
+---

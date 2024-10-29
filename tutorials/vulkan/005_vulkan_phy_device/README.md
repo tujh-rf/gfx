@@ -1,5 +1,7 @@
 # Physical device
 
-Before start working with Vulkan it is needed to choose the actual physical device.
-Because Vulkan provides the opportunity to operate with all type of devices, like CPUs and GPUs installed in the system, not all of them are suitable for the graphical output.
-First of all the application should take into account only graphical devices - exclude CPUs. Second step will be to check if the GPU has actual graphical output. Some GPUs doesn't have any graphical ports for the screen connections because they are using for math calculations and not for graphics.
+Vulkan supports different type of the physical devices, like CPUs, integrated or dedicated GPUs and so on. Before start using any of this devices the application must choose the most suitable for the application needs. For example the application may reject to run on integrated GPU and require the only dedicated graphical card. Or the application might require the graphical card with actual output because some of dedicated GPUs installed in the server might not have this feature and be used only for calculations without visualization.
+
+Tutorial will test available options of the physical devices available in the operation system for the Vulkan API and will choose the first GPU with the output feature.
+
+---
