@@ -36,6 +36,9 @@ endif()
 if( LINUX OR WIN32 )
     set( SUPPORT_OPENGL true )
 endif()
+if( WIN32 )
+    set( SUPPORT_DIRECTX true )
+endif()
 
 
 # options

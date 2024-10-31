@@ -9,6 +9,7 @@ To be able to build and run tutorials and samples next software will be needed:
 * git, will be needed to download additional software packages from the Github.
 * System libraries for the graphical development then it is needed (libX11, libXrand for example for the Linux platform and of course other)
 * For OpenGLES tutorials and samples also the Android Studio will be needed.
+* For DirectX tutorials and samples Windows SDK will be needed because there is no way to download it properly in the preparation stage.
 
 In the `cmake_modules` folder additional modules might be found to export software packages from Github during the setup of the project.
 
