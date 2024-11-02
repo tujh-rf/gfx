@@ -180,7 +180,8 @@ static bool init_d3d9( d3dApp &app ) {
         return false;
 
     if( FAILED( res = app.d3d9.instance->CheckDeviceFormat( D3DADAPTER_DEFAULT,
-                                                            D3DDEVTYPE_HAL, /* hardware MUST support D3D9 */
+                                                            D3DDEVTYPE_HAL, /* hardware should support D3D9 */
+                                                                /* in window mode it is needed to take the actual pixel format */
                                                             d3ddm.Format,
                                                             D3DUSAGE_DEPTHSTENCIL,
                                                             D3DRTYPE_SURFACE,
