@@ -170,6 +170,28 @@ static bool init_d3d9( d3dApp &app ) {
         return false;
 
     HRESULT res;
+    D3DADAPTER_IDENTIFIER9 d3dai;
+    if( FAILED( app.d3d9.instance->GetAdapterIdentifier( D3DADAPTER_DEFAULT,
+                                                         0, /**/
+                                                        &d3dai ) ) )
+        return false;
+
+    std::cout
+        << "Direct3D9 adapter: "
+            << d3dai.Description
+            << std::endl;
+
+    std::cout
+        << "Direct3D9 driver version: "
+            << HIWORD( d3dai.DriverVersion.HighPart )
+            << '.'
+            << LOWORD( d3dai.DriverVersion.HighPart )
+            << '.'
+            << HIWORD( d3dai.DriverVersion.LowPart )
+            << '.'
+            << LOWORD( d3dai.DriverVersion.LowPart )
+            << std::endl;
+
     D3DDISPLAYMODE d3ddm;
 
     /* Read current parameters of the display
