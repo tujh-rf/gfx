@@ -141,6 +141,16 @@ static bool init_opengl( oglApp &app ) {
 
     app.gl_loaded = true;
 
+    std::cout
+        << "OpenGL renderer: "
+            << reinterpret_cast< const char* > ( glGetString( GL_RENDERER ) )
+            << std::endl;
+
+    std::cout
+        << "OpenGL driver version: "
+            << reinterpret_cast< const char* > ( glGetString( GL_VERSION ) )
+            << std::endl;
+
     /* setup window clean color - light blue
      */
     glClearColor( 0.0f, 0.3f, 0.6f, 1.0f );
