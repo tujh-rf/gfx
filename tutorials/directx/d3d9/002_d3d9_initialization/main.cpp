@@ -165,7 +165,7 @@ static bool init_d3d9( d3dApp &app ) {
 
     /* Create Direct3D9 instance
      */
-    app.d3d9.instance = Direct3DCreate9( D3D9b_SDK_VERSION );
+    app.d3d9.instance = Direct3DCreate9( D3D_SDK_VERSION );
     if( !app.d3d9.instance )
         return false;
 
